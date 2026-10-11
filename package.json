@@ -1,0 +1,22 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@fontsource-variable/ibm-plex-sans": "^5.2.8",
+    "@fontsource/ibm-plex-mono": "^5.2.6",
+    "@iconify-json/ph": "^1.2.2",
+    "@iconify-json/solar": "^1.2.13",
+    "astro": "^7.3.8",
+    "astro-icon": "^1.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,60 @@
+---
+import { profile } from '../data/portfolio';
+import { withBase } from '../lib/url';
+import Icon from './Icon.astro';
+---
+
+<section class="section about" id="about" aria-label="About">
+  <div class="container">
+    <div class="hero">
+      <h1 class="typewriter-heading" aria-label={profile.greeting}>
+        <span class="typewriter-measure" aria-hidden="true">{profile.greeting}</span>
+        <span class="typewriter-live" aria-hidden="true">
+          <span class="typewriter" data-typewriter data-text={profile.greeting}></span><span
+            class="typewriter-cursor"></span>
+        </span>
+      </h1>
+      <p class="availability">
+        <span class="availability-dot" aria-hidden="true"></span>
+        {profile.availability}
+      </p>
+      <p class="title-line">{profile.title}</p>
+      <p class="prose intro">{profile.introduction}</p>
+      <div class="actions">
+        <a class="button button-primary" href={withBase('#projects')}>
+          <Icon name="solar:folder-line-duotone" size="1.1rem" />
+          View Projects
+        </a>
+        <a class="button button-secondary" href={withBase('#contact')}>
+          <Icon name="solar:letter-line-duotone" size="1.1rem" />
+          Contact Me
+        </a>
+      </div>
+    </div>
+    <div class="about-body">
+      <div>
+        <h2 class="section-title">
+          <Icon name="solar:user-rounded-bold-duotone" size="1.35rem" />
+          Professional summary
+        </h2>
+        <p class="prose summary">{profile.summary}</p>
+      </div>
+      <div>
+        <h2 class="section-title">
+          <Icon name="solar:check-circle-bold-duotone" size="1.35rem" />
+          Selected highlights
+        </h2>
+        <ul class="highlights">
+          {
+            profile.highlights.map((item) => (
+              <li>
+                <Icon name="solar:check-circle-bold-duotone" size="1.05rem" />
+                <span>{item}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

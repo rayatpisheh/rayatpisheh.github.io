@@ -1,0 +1,44 @@
+---
+import type { SkillGroup } from '../data/portfolio';
+import Icon from './Icon.astro';
+
+interface Props {
+  groups: SkillGroup[];
+}
+
+const { groups } = Astro.props;
+---
+
+<section class="section" id="skills" aria-labelledby="skills-heading">
+  <div class="container">
+    <h2 id="skills-heading" class="section-title">
+      <Icon name="solar:code-square-bold-duotone" size="1.35rem" />
+      Skills
+    </h2>
+    <dl class="skill-list">
+      {
+        groups.map((group) => (
+          <div class="skill-row">
+            <dt>
+              <Icon name={group.icon} size="1.15rem" />
+              {group.title}
+            </dt>
+            <dd>
+              <ul class="skill-tags">
+                {group.items.map((item) => (
+                  <li class="skill-tag">
+                    {item.icon && (
+                      <Icon name={item.icon} size="1.05rem" class="skill-tech-icon" />
+                    )}
+                    <span>{item.name}</span>
+                  </li>
+                ))}
+              </ul>
+              {group.note && <p class="skill-note">{group.note}</p>}
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>

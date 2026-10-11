@@ -1,0 +1,44 @@
+---
+import { contact } from '../data/portfolio';
+import { opensInNewTab } from '../lib/url';
+import Icon from './Icon.astro';
+---
+
+<section class="section" id="contact" aria-labelledby="contact-heading">
+  <div class="container">
+    <h2 id="contact-heading" class="section-title">
+      <Icon name="solar:letter-bold-duotone" size="1.35rem" />
+      Contact
+    </h2>
+    <p class="prose invitation">{contact.invitation}</p>
+    {contact.note && <p class="contact-note">{contact.note}</p>}
+    <ul class="contact-list">
+      {
+        contact.links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              {...(opensInNewTab(link.href)
+                ? { target: '_blank', rel: 'noopener noreferrer' }
+                : {})}
+            >
+              <span class="contact-label">
+                <Icon name={link.icon} size="1.15rem" />
+                {link.label}
+              </span>
+              <span class="contact-value">
+                {link.text}
+                {opensInNewTab(link.href) && (
+                  <Icon name="solar:square-arrow-right-up-line-duotone" size="0.95rem" />
+                )}
+                {opensInNewTab(link.href) && (
+                  <span class="visually-hidden"> (opens in a new tab)</span>
+                )}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

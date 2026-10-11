@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { profile } from '../data/portfolio';
+import { withBase } from '../lib/url';
+import Icon from '../components/Icon.astro';
+---
+
+<BaseLayout
+  title={`Page not found | ${profile.name}`}
+  description="The requested page does not exist."
+  noindex
+>
+  <section class="section about" aria-labelledby="missing-heading">
+    <div class="container">
+      <Icon name="solar:danger-triangle-bold-duotone" class="missing-mark" size="2.75rem" />
+      <h1 id="missing-heading">Page not found</h1>
+      <p class="prose intro">That address is not part of this site.</p>
+      <div class="actions">
+        <a class="button button-primary" href={withBase('/')}>
+          <Icon name="solar:home-2-line-duotone" size="1.1rem" />
+          Back to home
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

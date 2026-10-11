@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="MR">
+  <title>MR</title>
+  <style>
+    rect { fill: #1a4b86; }
+    text { fill: #ffffff; font-family: "Segoe UI", sans-serif; font-size: 12px; font-weight: 600; }
+    @media (prefers-color-scheme: dark) {
+      rect { fill: #d5e2f7; }
+      text { fill: #14161b; }
+    }
+  </style>
+  <rect width="32" height="32" rx="6"/>
+  <text x="16" y="21" text-anchor="middle">MR</text>
+</svg>

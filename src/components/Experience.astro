@@ -1,0 +1,70 @@
+---
+import type { Experience, WorkLocation } from '../data/portfolio';
+import { withBase } from '../lib/url';
+import Icon from './Icon.astro';
+
+interface Props {
+  roles: Experience[];
+}
+
+const locationMeta: Record<WorkLocation, { icon: string; label: string }> = {
+  'on-site': { icon: 'solar:buildings-line-duotone', label: 'On-site' },
+  remote: { icon: 'solar:laptop-line-duotone', label: 'Remote' },
+  hybrid: { icon: 'solar:home-wifi-line-duotone', label: 'Hybrid' },
+};
+
+const { roles } = Astro.props;
+---
+
+<section class="section" id="experience" aria-labelledby="experience-heading">
+  <div class="container">
+    <h2 id="experience-heading" class="section-title">
+      <Icon name="solar:case-round-bold-duotone" size="1.35rem" />
+      Experience
+    </h2>
+    {
+      roles.length === 0 ? (
+        <p class="prose">Add a role in the content file when you have verified details to publish.</p>
+      ) : (
+        <div class="timeline">
+          {roles.map((role) => (
+            <article class="entry">
+              <p class="role-meta">
+                <span class="role-period">
+                  <Icon name="solar:calendar-line-duotone" size="1rem" />
+                  {role.period}
+                </span>
+                <span class="role-location">
+                  <Icon name={locationMeta[role.location].icon} size="1rem" />
+                  {locationMeta[role.location].label}
+                </span>
+              </p>
+              <div class="role-heading">
+                <h3>{role.role}</h3>
+                {role.placeholder && <span class="flag">Placeholder</span>}
+              </div>
+              <p class="role-org">
+                <img
+                  class="role-logo"
+                  src={withBase(encodeURI(role.logo))}
+                  alt=""
+                  width="36"
+                  height="36"
+                />
+                {role.organization}
+              </p>
+              <p class="prose">{role.summary}</p>
+              {role.responsibilities.length > 0 && (
+                <ul class="duties">
+                  {role.responsibilities.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              )}
+            </article>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</section>
