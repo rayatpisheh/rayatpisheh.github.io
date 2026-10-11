@@ -6,7 +6,7 @@ import { defineConfig } from 'astro/config';
 // 2. Set `base` to /<repository-name> (leading slash, no trailing slash)
 // 3. If the repository is <username>.github.io, remove `base`
 const site = 'https://rayatpisheh.github.io';
-const base = '/portfolio';
+const base = '/';
 
 export default defineConfig({
   site,
