@@ -165,6 +165,16 @@ export const skillGroups: SkillGroup[] = [
 
 export const projects: Project[] = [
   {
+    id: 'carchi24',
+    title: 'Automotive Services Platform',
+    icon: 'solar:wheel-bold-duotone',
+    image: 'mockup/carchi.png',
+    description:
+      'Designed and developed a modular monolith platform for automotive services, with clearly separated business domains, extensible modules, and maintainable workflows. The platform includes service inquiries, payments, auctions, dynamic forms, and real-time updates. Development was accelerated with AI-assisted coding while maintaining architectural consistency and code quality.',
+    stack: ['ASP.NET Core', 'Next.js', 'React', 'Hangfire', 'SignalR', 'Cursor'],
+    links: [{ label: 'carchi24.ir', href: 'https://carchi24.ir/' }],
+  },
+  {
     id: 'crypto-payment-gateway',
     title: 'Cryptocurrency Payment Gateway',
     icon: 'solar:wallet-bold-duotone',
@@ -181,15 +191,7 @@ export const projects: Project[] = [
     description:
       'High-traffic online flight reservation and ticketing platform covering search, availability, booking, and issuance. Supplier integrations were isolated behind resilient microservice boundaries, with asynchronous messaging for booking, accounting, and notifications.',
     stack: ['C#', 'ASP.NET Core', 'Microservices', 'RabbitMQ', 'MassTransit'],
-  },
-  {
-    id: 'hadish-ecommerce',
-    title: 'e-commerce platform for Hadish Computer online store',
-    icon: 'solar:shop-bold-duotone',
-    image: 'mockup/ehadish.png',
-    description:
-      'E-commerce platform for computer hardware, laptops, peripherals, and digital accessories. Covers product catalog with specs, search and filtering, shopping cart, online ordering, customer accounts, and an admin dashboard for products, inventory, pricing, and orders.',
-    stack: ['C#', '.NET', 'ASP.NET Mvc', 'SQL Server', 'EF Core', 'jQuery', 'Bootstrap'],
+    links: [{ label: 'charter.ir', href: 'https://charter.ir/' }],
   },
   {
     id: 'digital-services-store',
@@ -199,6 +201,17 @@ export const projects: Project[] = [
     description:
       'Key contribution to migrating a digital-services store for in-game credit and gift cards from WordPress to .NET, improving stability, scalability, and maintainability. Backend services and admin panels covered products, orders, supplier fulfilment, and customer-loyalty workflows.',
     stack: ['C#', '.NET', 'ASP.NET Core', 'SQL Server'],
+    links: [{ label: 'igame.ir', href: 'https://igame.ir/' }],
+  },
+  {
+    id: 'hadish-ecommerce',
+    title: 'e-commerce platform for Hadish Computer online store',
+    icon: 'solar:shop-bold-duotone',
+    image: 'mockup/ehadish.png',
+    description:
+      'E-commerce platform for computer hardware, laptops, peripherals, and digital accessories. Covers product catalog with specs, search and filtering, shopping cart, online ordering, customer accounts, and an admin dashboard for products, inventory, pricing, and orders.',
+    stack: ['C#', '.NET', 'ASP.NET Mvc', 'SQL Server', 'EF Core', 'jQuery', 'Bootstrap'],
+    links: [{ label: 'ehadish.com', href: 'https://www.ehadish.com/' }],
   },
   {
     id: 'taxicore',
@@ -220,6 +233,22 @@ export const projects: Project[] = [
 ];
 
 export const experience: Experience[] = [
+  {
+    id: 'freelance',
+    role: 'Freelance Senior Full-Stack Developer',
+    organization: 'Independent',
+    logo: 'logos/freelance.svg',
+    period: 'June 2026 - Present',
+    location: 'remote',
+    summary:
+      'Design and deliver backend systems for client products, from architecture and APIs through production support.',
+    responsibilities: [
+      'Developed a comprehensive vehicle services platform, implementing core business workflows, payment integrations, and scalable backend APIs using ASP.NET Core and modern frontend technologies.',
+      'Maintained and modernized an established accounting system, extending business-critical functionality, optimizing database operations, and improving application reliability across the stack.',
+      
+      
+    ],
+  },
   {
     id: 'igame',
     role: 'Full Stack Engineer',
