@@ -10,11 +10,11 @@ import Icon from '../components/Icon.astro';
   description="The requested page does not exist."
   noindex
 >
-  <section class="section about" aria-labelledby="missing-heading">
-    <div class="container">
+  <section class="section missing-section" aria-labelledby="missing-heading">
+    <div class="container missing-panel" data-reveal>
       <Icon name="solar:danger-triangle-bold-duotone" class="missing-mark" size="2.75rem" />
       <h1 id="missing-heading">Page not found</h1>
-      <p class="prose intro">That address is not part of this site.</p>
+      <p class="prose hero-lede">That address is not part of this site.</p>
       <div class="actions">
         <a class="button button-primary" href={withBase('/')}>
           <Icon name="solar:home-2-line-duotone" size="1.1rem" />

@@ -1,5 +1,5 @@
 ---
-import '@fontsource-variable/ibm-plex-sans/wght.css';
+import '@fontsource-variable/outfit/wght.css';
 import '@fontsource/ibm-plex-mono/latin-400.css';
 import '@fontsource/ibm-plex-mono/latin-500.css';
 import '../styles/global.css';
@@ -46,7 +46,8 @@ const person = {
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="theme-color" content="#f3f4f6" />
+    <meta name="theme-color" content="#eef1f6" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#12151c" media="(prefers-color-scheme: dark)" />
     <link rel="icon" href={withBase('favicon.svg')} type="image/svg+xml" />
     <script is:inline>
       (() => {
@@ -64,6 +65,7 @@ const person = {
     <script type="application/ld+json" set:html={JSON.stringify(person)} />
   </head>
   <body>
+    <div class="grain" aria-hidden="true"></div>
     <a class="skip-link" href="#content">Skip to content</a>
     <SiteHeader />
     <main id="content">
@@ -73,8 +75,8 @@ const person = {
     <ScrollToTop />
     <Lightbox />
     <script src="../scripts/theme.ts"></script>
-    <script src="../scripts/typewriter.ts"></script>
-    <script src="../scripts/projects-carousel.ts"></script>
+    <script src="../scripts/reveal.ts"></script>
+    <script src="../scripts/projects-expand.ts"></script>
     <script src="../scripts/lightbox.ts"></script>
     <script src="../scripts/scroll-top.ts"></script>
   </body>

@@ -11,34 +11,37 @@ const { groups } = Astro.props;
 
 <section class="section" id="skills" aria-labelledby="skills-heading">
   <div class="container">
-    <h2 id="skills-heading" class="section-title">
-      <Icon name="solar:code-square-bold-duotone" size="1.35rem" />
-      Skills
-    </h2>
-    <dl class="skill-list">
+    <div class="section-head" data-reveal>
+      <h2 id="skills-heading">Skills</h2>
+      <p class="section-lede">Backend depth first, with architecture and delivery practices that hold up in production.</p>
+    </div>
+    <div class="skill-bento">
       {
-        groups.map((group) => (
-          <div class="skill-row">
-            <dt>
-              <Icon name={group.icon} size="1.15rem" />
+        groups.map((group, index) => (
+          <article
+            class:list={[
+              'skill-cell',
+              { 'skill-cell-wide': index === 0, 'skill-cell-accent': index === 3 },
+            ]}
+            data-reveal
+            data-reveal-delay={String((index % 3) + 1)}
+          >
+            <h3>
+              <Icon name={group.icon} size="1.2rem" />
               {group.title}
-            </dt>
-            <dd>
-              <ul class="skill-tags">
-                {group.items.map((item) => (
-                  <li class="skill-tag">
-                    {item.icon && (
-                      <Icon name={item.icon} size="1.05rem" class="skill-tech-icon" />
-                    )}
-                    <span>{item.name}</span>
-                  </li>
-                ))}
-              </ul>
-              {group.note && <p class="skill-note">{group.note}</p>}
-            </dd>
-          </div>
+            </h3>
+            <ul class="skill-tags">
+              {group.items.map((item) => (
+                <li class="skill-tag">
+                  {item.icon && <Icon name={item.icon} size="1.05rem" class="skill-tech-icon" />}
+                  <span>{item.name}</span>
+                </li>
+              ))}
+            </ul>
+            {group.note && <p class="skill-note">{group.note}</p>}
+          </article>
         ))
       }
-    </dl>
+    </div>
   </div>
 </section>

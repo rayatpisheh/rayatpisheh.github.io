@@ -1,3 +1,4 @@
+import react from '@astrojs/react';
 import icon from 'astro-icon';
 import { defineConfig } from 'astro/config';
 
@@ -13,5 +14,15 @@ export default defineConfig({
   base,
   output: 'static',
   trailingSlash: 'always',
-  integrations: [icon()],
+  integrations: [icon(), react()],
+  vite: {
+    ssr: {
+      // Package ships extensionless ESM imports that break Node resolution.
+      noExternal: ['@ai-animate/core'],
+    },
+    optimizeDeps: {
+      include: ['@ai-animate/core', 'gsap', 'motion'],
+    },
+  },
 });
+

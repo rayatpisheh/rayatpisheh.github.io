@@ -2,24 +2,30 @@
 import { profile } from '../data/portfolio';
 import { withBase } from '../lib/url';
 import Icon from './Icon.astro';
+import HeroCodeMotion from './HeroCodeMotion';
+import HeroTitleMotion from './HeroTitleMotion';
+
+const codeFallback = `public class PaymentGateway
+{
+  public async Task SettleAsync()
+  {
+    await bus.Publish(new Settled());
+  }
+}`;
 ---
 
-<section class="section about" id="about" aria-label="About">
-  <div class="container">
-    <div class="hero">
-      <h1 class="typewriter-heading" aria-label={profile.greeting}>
-        <span class="typewriter-measure" aria-hidden="true">{profile.greeting}</span>
-        <span class="typewriter-live" aria-hidden="true">
-          <span class="typewriter" data-typewriter data-text={profile.greeting}></span><span
-            class="typewriter-cursor"></span>
-        </span>
-      </h1>
+<section class="hero-section" id="about" aria-label="About">
+  <div class="atmosphere" aria-hidden="true"></div>
+  <div class="container hero-shell">
+    <div class="hero-copy" data-reveal>
       <p class="availability">
         <span class="availability-dot" aria-hidden="true"></span>
         {profile.availability}
       </p>
-      <p class="title-line">{profile.title}</p>
-      <p class="prose intro">{profile.introduction}</p>
+      <h1 class="brand-hero">{profile.name}</h1>
+      <p class="hero-title" data-hero-title-fallback>{profile.title}</p>
+      <HeroTitleMotion client:only="react" title={profile.title} />
+      <p class="hero-lede">{profile.introduction}</p>
       <div class="actions">
         <a class="button button-primary" href={withBase('#projects')}>
           <Icon name="solar:folder-line-duotone" size="1.1rem" />
@@ -27,34 +33,45 @@ import Icon from './Icon.astro';
         </a>
         <a class="button button-secondary" href={withBase('#contact')}>
           <Icon name="solar:letter-line-duotone" size="1.1rem" />
-          Contact Me
+          Contact
         </a>
       </div>
     </div>
-    <div class="about-body">
-      <div>
-        <h2 class="section-title">
-          <Icon name="solar:user-rounded-bold-duotone" size="1.35rem" />
-          Professional summary
-        </h2>
-        <p class="prose summary">{profile.summary}</p>
+
+    <div class="hero-visual" data-reveal data-reveal-delay="1">
+      <div class="hero-code" data-hero-fallback>
+        <div class="hero-code-chrome" aria-hidden="true">
+          <span class="hero-code-dot"></span>
+          <span class="hero-code-dot"></span>
+          <span class="hero-code-dot"></span>
+          <span class="hero-code-file">PaymentGateway.cs</span>
+        </div>
+        <pre class="hero-code-body"><code>{codeFallback}</code></pre>
+        <p class="hero-code-focus">
+          <span class="hero-code-focus-label">Building</span>
+          <span class="hero-code-focus-word">APIs</span>
+        </p>
       </div>
-      <div>
-        <h2 class="section-title">
-          <Icon name="solar:check-circle-bold-duotone" size="1.35rem" />
-          Selected highlights
-        </h2>
-        <ul class="highlights">
-          {
-            profile.highlights.map((item) => (
-              <li>
-                <Icon name="solar:check-circle-bold-duotone" size="1.05rem" />
-                <span>{item}</span>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
+      <HeroCodeMotion client:only="react" />
     </div>
+  </div>
+
+  <div class="container about-panel" data-reveal>
+    <div class="about-summary">
+      <h2 id="summary-heading">Background</h2>
+      <p class="prose summary">{profile.summary}</p>
+    </div>
+    <ul class="highlights" aria-label="Selected highlights">
+      {
+        profile.highlights.map((item, index) => (
+          <li>
+            <span class="highlight-index" aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <span>{item}</span>
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </section>

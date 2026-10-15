@@ -18,49 +18,52 @@ const { roles } = Astro.props;
 
 <section class="section" id="experience" aria-labelledby="experience-heading">
   <div class="container">
-    <h2 id="experience-heading" class="section-title">
-      <Icon name="solar:case-round-bold-duotone" size="1.35rem" />
-      Experience
-    </h2>
+    <div class="section-head" data-reveal>
+      <h2 id="experience-heading">Experience</h2>
+      <p class="section-lede">Roles across fintech, travel, commerce, and enterprise systems.</p>
+    </div>
     {
       roles.length === 0 ? (
         <p class="prose">Add a role in the content file when you have verified details to publish.</p>
       ) : (
         <div class="timeline">
           {roles.map((role) => (
-            <article class="entry">
-              <p class="role-meta">
-                <span class="role-period">
-                  <Icon name="solar:calendar-line-duotone" size="1rem" />
-                  {role.period}
-                </span>
-                <span class="role-location">
-                  <Icon name={locationMeta[role.location].icon} size="1rem" />
-                  {locationMeta[role.location].label}
-                </span>
-              </p>
-              <div class="role-heading">
-                <h3>{role.role}</h3>
-                {role.placeholder && <span class="flag">Placeholder</span>}
+            <article class="entry" data-reveal>
+              <div class="entry-rail" aria-hidden="true"></div>
+              <div class="entry-main">
+                <p class="role-meta">
+                  <span class="role-period">
+                    <Icon name="solar:calendar-line-duotone" size="1rem" />
+                    {role.period}
+                  </span>
+                  <span class="role-location">
+                    <Icon name={locationMeta[role.location].icon} size="1rem" />
+                    {locationMeta[role.location].label}
+                  </span>
+                </p>
+                <div class="role-heading">
+                  <h3>{role.role}</h3>
+                  {role.placeholder && <span class="flag">Placeholder</span>}
+                </div>
+                <p class="role-org">
+                  <img
+                    class="role-logo"
+                    src={withBase(encodeURI(role.logo))}
+                    alt=""
+                    width="40"
+                    height="40"
+                  />
+                  {role.organization}
+                </p>
+                <p class="prose">{role.summary}</p>
+                {role.responsibilities.length > 0 && (
+                  <ul class="duties">
+                    {role.responsibilities.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
-              <p class="role-org">
-                <img
-                  class="role-logo"
-                  src={withBase(encodeURI(role.logo))}
-                  alt=""
-                  width="36"
-                  height="36"
-                />
-                {role.organization}
-              </p>
-              <p class="prose">{role.summary}</p>
-              {role.responsibilities.length > 0 && (
-                <ul class="duties">
-                  {role.responsibilities.map((item) => (
-                    <li>{item}</li>
-                  ))}
-                </ul>
-              )}
             </article>
           ))}
         </div>

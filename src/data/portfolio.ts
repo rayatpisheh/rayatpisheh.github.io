@@ -61,16 +61,16 @@ export interface ContactLink {
 }
 
 export const meta = {
-  title: 'Mohammad Rayat Pisheh | Senior .NET Developer',
+  title: 'Mohammad Rayat Pisheh | Senior Full Stack Developer',
   description:
-    'Senior .NET developer with 12+ years of experience in C#, ASP.NET Core, EF Core, microservices, payment systems, and backend architecture.',
+    'Senior full stack developer with 12+ years of experience in C#, ASP.NET Core, EF Core, microservices, payment systems, and backend architecture.',
 };
 
 export const profile = {
   name: 'Mohammad Rayat Pisheh',
   greeting: "Hi, I'm Mohammad Rayat Pisheh",
   availability: 'Available for freelance & part-time work',
-  title: 'Senior .NET Developer | C#, ASP.NET Core, EF Core | Microservices',
+  title: 'Senior Full Stack Developer',
   introduction:
     'I design and build maintainable backend systems for payments, bookings, and enterprise platforms.',
   summary:

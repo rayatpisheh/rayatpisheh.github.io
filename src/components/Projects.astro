@@ -12,102 +12,77 @@ const { projects } = Astro.props;
 
 <section class="section" id="projects" aria-labelledby="projects-heading">
   <div class="container">
-    <h2 id="projects-heading" class="section-title">
-      <Icon name="solar:folder-bold-duotone" size="1.35rem" />
-      Projects
-    </h2>
+    <div class="section-head" data-reveal>
+      <h2 id="projects-heading">Projects</h2>
+      <p class="section-lede">Selected platforms spanning payments, bookings, commerce, and operations.</p>
+    </div>
+
     {
       projects.length === 0 ? (
         <p class="prose">Add a project in the content file when you have one to publish.</p>
       ) : (
-        <div class="project-carousel" data-project-carousel>
-          <div class="project-carousel-toolbar">
-            <p class="project-carousel-status" data-carousel-status aria-live="polite"></p>
-            <div class="project-carousel-controls">
+        <ul class="project-index">
+          {projects.map((project, index) => (
+            <li class="project-row" data-reveal data-reveal-delay={String((index % 2) + 1)} data-project>
               <button
                 type="button"
-                class="project-carousel-btn"
-                data-carousel-prev
-                aria-label="Previous projects"
+                class="project-thumb"
+                data-lightbox-open
+                data-lightbox-src={withBase(encodeURI(project.image))}
+                data-lightbox-alt={project.title}
+                aria-haspopup="dialog"
+                aria-label={`View larger image of ${project.title}`}
               >
-                <Icon name="solar:alt-arrow-left-line-duotone" size="1.25rem" />
+                <img
+                  src={withBase(encodeURI(project.image))}
+                  alt=""
+                  width="320"
+                  height="240"
+                  loading="lazy"
+                  decoding="async"
+                />
               </button>
-              <button
-                type="button"
-                class="project-carousel-btn"
-                data-carousel-next
-                aria-label="Next projects"
-              >
-                <Icon name="solar:alt-arrow-right-line-duotone" size="1.25rem" />
-              </button>
-            </div>
-          </div>
-
-          <div class="project-track" data-carousel-track tabindex="0">
-            {projects.map((project) => (
-              <article class="project-card" data-carousel-slide>
-                <div class="project-media">
+              <div class="project-info">
+                <div class="project-heading">
+                  <h3>{project.title}</h3>
+                  {project.placeholder && <span class="flag">Placeholder</span>}
+                </div>
+                <p class="project-desc" id={`project-desc-${project.id}`}>
+                  {project.description}
+                </p>
+                <p class="project-stack">{project.stack.join(', ')}</p>
+                <div class="project-foot">
                   <button
                     type="button"
-                    class="project-media-trigger"
-                    data-lightbox-open
-                    data-lightbox-src={withBase(encodeURI(project.image))}
-                    data-lightbox-alt={project.title}
-                    aria-haspopup="dialog"
-                    aria-label={`View larger image of ${project.title}`}
+                    class="project-more"
+                    data-project-toggle
+                    aria-expanded="false"
+                    aria-controls={`project-desc-${project.id}`}
+                    hidden
                   >
-                    <img
-                      src={withBase(encodeURI(project.image))}
-                      alt=""
-                      width="1024"
-                      height="1024"
-                      loading="lazy"
-                      decoding="async"
-                    />
+                    More
                   </button>
-                  <span class="project-media-icon" aria-hidden="true">
-                    <Icon name={project.icon} size="1.15rem" />
-                  </span>
+                  {project.links?.map((link) => (
+                    <a
+                      href={link.href}
+                      {...(opensInNewTab(link.href)
+                        ? { target: '_blank', rel: 'noopener noreferrer' }
+                        : {})}
+                    >
+                      {link.label}
+                      {opensInNewTab(link.href) && (
+                        <Icon name="solar:square-arrow-right-up-line-duotone" size="0.9rem" />
+                      )}
+                      {opensInNewTab(link.href) && (
+                        <span class="visually-hidden"> (opens in a new tab)</span>
+                      )}
+                    </a>
+                  ))}
                 </div>
-                <div class="project-body">
-                  <div class="project-heading">
-                    <h3>{project.title}</h3>
-                    {project.placeholder && <span class="flag">Placeholder</span>}
-                  </div>
-                  <p class="prose">{project.description}</p>
-                  <p class="stack">
-                    <span class="stack-label">Stack</span>
-                    <span>{project.stack.join(', ')}</span>
-                  </p>
-                  {project.links && project.links.length > 0 && (
-                    <ul class="project-links">
-                      {project.links.map((link) => (
-                        <li>
-                          <a
-                            href={link.href}
-                            {...(opensInNewTab(link.href)
-                              ? { target: '_blank', rel: 'noopener noreferrer' }
-                              : {})}
-                          >
-                            {link.label}
-                            {opensInNewTab(link.href) && (
-                              <Icon name="solar:square-arrow-right-up-line-duotone" size="0.95rem" />
-                            )}
-                            {opensInNewTab(link.href) && (
-                              <span class="visually-hidden"> (opens in a new tab)</span>
-                            )}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              </article>
-            ))}
-          </div>
-
-          <div class="project-dots" data-carousel-dots role="tablist" aria-label="Project slides"></div>
-        </div>
+              </div>
+            </li>
+          ))}
+        </ul>
       )
     }
   </div>
