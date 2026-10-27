@@ -71,6 +71,7 @@ export const profile = {
   greeting: "Hi, I'm Mohammad Rayat Pisheh",
   availability: 'Available for freelance & part-time work',
   title: 'Senior Full Stack Developer',
+  photo: 'cv-photo.jpg',
   introduction:
     'I design and build maintainable backend systems for payments, bookings, and enterprise platforms.',
   summary:

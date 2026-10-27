@@ -35,7 +35,7 @@ const { projects } = Astro.props;
               >
                 <img
                   src={withBase(encodeURI(project.image))}
-                  alt=""
+                  alt={project.title}
                   width="320"
                   height="240"
                   loading="lazy"

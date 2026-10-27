@@ -18,10 +18,30 @@ const codeFallback = `public class PaymentGateway
   <div class="atmosphere" aria-hidden="true"></div>
   <div class="container hero-shell">
     <div class="hero-copy" data-reveal>
-      <p class="availability">
-        <span class="availability-dot" aria-hidden="true"></span>
-        {profile.availability}
-      </p>
+      <div class="hero-profile-row">
+        <button
+          type="button"
+          class="hero-avatar-btn"
+          data-lightbox-open
+          data-lightbox-src={withBase(profile.photo)}
+          data-lightbox-alt={profile.name}
+          aria-label={`View photo of ${profile.name}`}
+        >
+          <img
+            src={withBase(profile.photo)}
+            alt={profile.name}
+            class="hero-avatar"
+            width="88"
+            height="88"
+            loading="eager"
+            decoding="async"
+          />
+        </button>
+        <p class="availability">
+          <span class="availability-dot" aria-hidden="true"></span>
+          {profile.availability}
+        </p>
+      </div>
       <h1 class="brand-hero">{profile.name}</h1>
       <p class="hero-title" data-hero-title-fallback>{profile.title}</p>
       <HeroTitleMotion client:only="react" title={profile.title} />
