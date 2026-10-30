@@ -12,6 +12,8 @@ export const GET: APIRoute = ({ site }) => {
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+  <url><loc>${siteUrl}/articles/</loc><lastmod>${lastmod}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>${siteUrl}/articles/grokbot-multi-agent/</loc><lastmod>${lastmod}</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
 </urlset>`;
 
   return new Response(xml, {

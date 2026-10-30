@@ -89,6 +89,7 @@ export const navigation = [
   { href: '#skills', label: 'Skills', icon: 'solar:code-square-bold-duotone' },
   { href: '#projects', label: 'Projects', icon: 'solar:folder-bold-duotone' },
   { href: '#experience', label: 'Experience', icon: 'solar:case-round-bold-duotone' },
+  { href: '/articles/', label: 'Articles', icon: 'solar:document-text-bold-duotone' },
   { href: '#contact', label: 'Contact', icon: 'solar:letter-bold-duotone' },
 ] as const;
 
