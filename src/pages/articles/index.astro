@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Articles | Mohammad Rayat Pisheh" description="مقالات فارسی درباره مهندسی نرم‌افزار، معماری سیستم و هوش مصنوعی">
+  <section class="container listing" lang="fa" dir="rtl">
+    <p class="eyebrow">ARTICLES / نوشته‌ها</p>
+    <h1>مقالات</h1>
+    <p class="intro">یادداشت‌ها و مطالب تخصصی درباره توسعه نرم‌افزار، معماری سیستم‌ها و هوش مصنوعی.</p>
+    <a class="article-card" href="/articles/grokbot-multi-agent/">
+      <img src="/articles/grokbot-kimi-cover.svg" alt="کاور معماری Grokbot و Kimi K3" width="1983" height="793" />
+      <div class="details"><span class="tag">هوش مصنوعی · Multi-Agent</span><h2>از یک چت‌بات ساده تا یک سیستم چندایجنتی با ۳۰۰ عامل هوش مصنوعی</h2><p>راهنمای ساخت سیستم چندایجنتی با Grokbot و Kimi K3؛ از تقسیم وظایف و حافظه مشترک تا مدیریت خطا.</p><span class="read">مطالعه مقاله ←</span></div>
+    </a>
+  </section>
+</BaseLayout>
+<style>
+.listing{padding-block:4.5rem 7rem;min-height:70vh}.eyebrow{font-size:.85rem;letter-spacing:.08em;color:var(--accent);font-weight:700}.listing h1{font-size:clamp(2.2rem,5vw,3.3rem);margin:.5rem 0}.intro{color:var(--muted);margin-bottom:2.5rem;line-height:2}.article-card{display:block;max-width:770px;text-decoration:none;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface-strong);box-shadow:var(--shadow-soft);transition:transform .2s,border-color .2s}.article-card:hover{transform:translateY(-3px);border-color:var(--accent)}.article-card img{width:100%;aspect-ratio:1983/793;object-fit:cover}.details{padding:1.5rem 1.7rem 1.8rem}.tag,.read{font-size:.9rem;color:var(--accent);font-weight:600}.details h2{font-size:clamp(1.4rem,3vw,1.85rem);line-height:1.6;margin:.6rem 0}.details p{color:var(--muted);line-height:1.9;margin-bottom:1.1rem}
+</style>
