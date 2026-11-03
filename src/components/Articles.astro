@@ -1,0 +1,65 @@
+---
+import type { Article } from '../data/portfolio';
+import { withBase } from '../lib/url';
+import Icon from './Icon.astro';
+
+interface Props {
+  articles: Article[];
+}
+
+const { articles } = Astro.props;
+---
+
+<section class="section" id="articles" aria-labelledby="articles-heading">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <div class="section-badge font-vazir">
+        <Icon name="solar:document-text-bold-duotone" size="1.05rem" />
+        <span>مقالات و یادداشت‌ها</span>
+      </div>
+      <h2 id="articles-heading">Articles</h2>
+      <p class="section-lede font-vazir">
+        یادداشت‌ها و راهنماهای تخصصی در حوزه هوش مصنوعی، سیستم‌های چندایجنت و مهندسی نرم‌افزار.
+      </p>
+    </div>
+
+    {
+      articles.length === 0 ? (
+        <p class="prose font-vazir">در حال حاضر مقاله‌ای برای نمایش وجود ندارد.</p>
+      ) : (
+        <div class="articles-cards-container">
+          {articles.map((article) => (
+            <article class="article-x-card font-vazir" dir="rtl" data-reveal>
+              <a href={withBase(article.slug)} class="article-x-card-inner">
+                <div class="article-x-media">
+                  <img
+                    src={withBase(article.image)}
+                    alt={article.title}
+                    width="600"
+                    height="320"
+                    loading="lazy"
+                    decoding="async"
+                    class="article-x-img"
+                  />
+                  <div class="article-x-badge">
+                    <Icon name="solar:document-text-bold-duotone" size="0.95rem" />
+                    <span>Article</span>
+                  </div>
+                </div>
+
+                <div class="article-x-body">
+                  <h3 class="article-x-title">
+                    {article.title}
+                  </h3>
+                  <p class="article-x-excerpt">
+                    {article.excerpt}
+                  </p>
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</section>

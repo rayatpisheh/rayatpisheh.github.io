@@ -60,6 +60,24 @@ export interface ContactLink {
   icon: string;
 }
 
+export interface Article {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  image: string;
+  category: string;
+  date: string;
+  readTime: string;
+  tags: string[];
+  featured?: boolean;
+  author?: {
+    name: string;
+    handle?: string;
+    role?: string;
+  };
+}
+
 export const meta = {
   title: 'Mohammad Rayat Pisheh | Senior Full Stack Developer',
   description:
@@ -90,6 +108,7 @@ export const navigation = [
   { href: '#projects', label: 'Projects', icon: 'solar:folder-bold-duotone' },
   { href: '#experience', label: 'Experience', icon: 'solar:case-round-bold-duotone' },
   { href: '#contact', label: 'Contact', icon: 'solar:letter-bold-duotone' },
+  { href: '#articles', label: 'Articles', icon: 'solar:document-text-bold-duotone' },
 ] as const;
 
 export const skillGroups: SkillGroup[] = [
@@ -372,3 +391,26 @@ export const contact = {
     },
   ] satisfies ContactLink[],
 };
+
+
+export const articles: Article[] = [
+  {
+    id: 'grokbot-multi-agent',
+    title: 'چطور Grokbot را به یک سیستم چندایجنت تبدیل کنیم با ۳۰۰ ایجنت K3 (راهنمای کامل)',
+    slug: '/articles/grokbot-multi-agent/',
+    excerpt:
+      'راهنمای معماری و پیاده‌سازی گام‌به‌گام ارکستراسیون ۳۰۰ ایجنت K3 به رهبری ۱۶ ایجنت هسته Grokbot برای تسک‌های موازی تحقیق، تحلیل، کدنویسی، جمع‌آوری داده و گزارش‌گیری خودکار.',
+    image: 'articles/grokbot-multi-agent.webp',
+    category: 'Article',
+    date: 'آبان ۱۴۰۵',
+    readTime: '۸ دقیقه مطالعه',
+    tags: ['Grokbot', 'Multi-Agent', 'K3 Architecture', 'AI Swarms', 'System Design'],
+    featured: true,
+    author: {
+      name: 'SallaR',
+      handle: '@SallarDev',
+      role: 'AI Systems Architect',
+      avatar: 'articles/sallar.jpg',
+    },
+  },
+];

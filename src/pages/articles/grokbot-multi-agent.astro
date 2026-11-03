@@ -1,0 +1,456 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import { withBase } from '../../lib/url';
+
+const title = 'چطور Grokbot را به یک سیستم چندایجنت تبدیل کنیم با ۳۰۰ ایجنت K3 (راهنمای کامل)';
+const description = 'راهنمای گام‌به‌گام اتصال، راه‌اندازی، هماهنگی و اجرای همزمان ۳۰۰ ایجنت هوش مصنوعی با معماری K3 در Grokbot برای تسک‌های پیچیده تحلیلی، کدنویسی و پردازش داده.';
+const bannerImage = 'articles/grokbot-multi-agent.webp';
+const authorAvatar = 'articles/sallar.jpg';
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="reading-progress-container" aria-hidden="true">
+    <div class="reading-progress-bar" id="readingProgress"></div>
+  </div>
+
+  <article class="article-page font-vazir" dir="rtl" lang="fa">
+    <div class="container article-container">
+      {/* Breadcrumbs */}
+      <nav class="article-breadcrumb" aria-label="مسیر راهنما">
+        <ol>
+          <li>
+            <a href={withBase('/')}>
+              <Icon name="solar:home-2-line-duotone" size="0.95rem" />
+              <span>خانه</span>
+            </a>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li>
+            <a href={withBase('/#articles')}>مقالات</a>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page" class="current-crumb">
+            سیستم چندایجنت Grokbot و K3
+          </li>
+        </ol>
+      </nav>
+
+      {/* Header */}
+      <header class="article-header">
+        <div class="article-badge-row">
+          <span class="article-category-badge">
+            <Icon name="solar:widget-5-bold-duotone" size="1rem" />
+            معماری سیستم‌های چندایجنت (Multi-Agent Swarm)
+          </span>
+          <span class="article-pill-tag">۳۰۰ ایجنت K3</span>
+          <span class="article-pill-tag">هسته Grokbot</span>
+        </div>
+
+        <h1 class="article-main-title">
+          چطور Grokbot را به یک سیستم چندایجنت تبدیل کنیم با ۳۰۰ ایجنت K3 (راهنمای کامل)
+        </h1>
+
+        <p class="article-main-lead">
+          چگونه با تلفیق ۱۶ ایجنت هماهنگ‌کننده هسته Grokbot و ۳۰۰ ایجنت تخصصی K3، یک سیستم خودگردان، مقیاس‌پذیر و توزیع‌شده برای انجام تسک‌های سنگین پژوهشی، مهندسی نرم‌افزار و تحلیل داده بسازیم.
+        </p>
+
+        <div class="article-meta-bar">
+          <div class="article-author-meta">
+            <div class="author-avatar-lg">
+              <img
+                src={withBase(authorAvatar)}
+                alt="SallaR"
+                width="48"
+                height="48"
+                class="author-photo-img"
+                loading="eager"
+              />
+            </div>
+            <div class="author-details">
+              <span class="author-name-lg">SallaR</span>
+              <a href="https://x.com/SallarDev" target="_blank" rel="noopener noreferrer" class="author-handle-link" dir="ltr">
+                @SallarDev
+              </a>
+            </div>
+          </div>
+
+          <div class="article-stats-meta">
+            <span class="stat-item">
+              <Icon name="solar:calendar-line-duotone" size="1.1rem" />
+              <time datetime="2026-10-28">آبان ۱۴۰۵</time>
+            </span>
+            <span class="stat-item">
+              <Icon name="solar:clock-circle-line-duotone" size="1.1rem" />
+              <span>۸ دقیقه زمان مطالعه</span>
+            </span>
+            <span class="stat-item">
+              <Icon name="solar:eye-line-duotone" size="1.1rem" />
+              <span>تخصصی / معماری سیستم</span>
+            </span>
+          </div>
+        </div>
+      </header>
+
+      {/* Hero Banner / Infographic */}
+      <figure class="article-hero-figure">
+        <button
+          type="button"
+          class="article-hero-image-btn"
+          data-lightbox-open
+          data-lightbox-src={withBase(bannerImage)}
+          data-lightbox-alt={title}
+          aria-haspopup="dialog"
+          aria-label="بزرگنمایی تصویر دیاگرام معماری چندایجنت"
+        >
+          <img
+            src={withBase(bannerImage)}
+            alt="دیاگرام معماری سیستم چندایجنت Grokbot و ۳۰۰ ایجنت K3"
+            width="1200"
+            height="500"
+            class="article-hero-img"
+            loading="eager"
+            decoding="async"
+          />
+          <div class="hero-image-overlay" aria-hidden="true">
+            <span class="zoom-badge">
+              <Icon name="solar:magnifer-zoom-in-line-duotone" size="1.1rem" />
+              برای مشاهده تصویر در اندازه کامل کلیک کنید
+            </span>
+          </div>
+        </button>
+        <figcaption class="article-figure-caption">
+          <strong>دیاگرام معماری:</strong> ساختار هماهنگی ۱۶ ایجنت راهبر در Grokbot متصل به ۳۰۰ ایجنت اجرایی K3 و خط لوله ۵ مرحله‌ای (راه‌اندازی، ایجاد، هماهنگی، اجرا و نتایج).
+        </figcaption>
+      </figure>
+
+      {/* Quick Summary Box */}
+      <div class="article-key-takeaways">
+        <div class="takeaways-header">
+          <Icon name="solar:star-bold-duotone" size="1.25rem" />
+          <h3>نکات کلیدی این راهنما در یک نگاه</h3>
+        </div>
+        <ul class="takeaways-list">
+          <li>
+            <strong>چرا چندایجنت؟</strong> فراتر رفتن از محدودیت‌های تک‌پرامپت و پنجره زمینه (Context Window) با شکستن پروژه‌های بزرگ به زیرتسک‌های تخصصی موازی.
+          </li>
+          <li>
+            <strong>هسته Grokbot (۱۶ ایجنت):</strong> مسئول برنامه‌ریزی، تحقیق استراتژیک، ایجاد ایجنت‌ها، هماهنگی، اجرا و پایش مستمر.
+          </li>
+          <li>
+            <strong>خوشه K3 (۳۰۰ ایجنت):</strong> ایجنت‌های تخصصی در ۶ گروه کاری (تحقیق، تحلیل، کدنویسی، جمع‌آوری داده، اجرا، و گزارش‌گیری).
+          </li>
+          <li>
+            <strong>جلوگیری از هرج‌ومرج و مصرف بیرویه توکن:</strong> مدیریت پیام‌ها با معماری درختی (Tree-of-Thought) و گذرگاه داده توزیع‌شده.
+          </li>
+        </ul>
+      </div>
+
+      {/* Main Article Content */}
+      <div class="article-content prose">
+        <section class="content-section">
+          <h2>مقدمه: چرا به سیستم‌های چندایجنت (Multi-Agent Swarms) نیاز داریم؟</h2>
+          <p>
+            هنگامی که پروژه‌های نرم‌افزاری یا فرآیندهای تحلیل داده از یک حد مشخص پیچیده‌تر می‌شوند، تلاش برای حل مسئله با یک ایجنت واحد، حتی با پیشرفته‌ترین مدل‌های زبانی، به دو چالش عمده برمی‌خورد: <strong>اشباع پنجره کانتکست (Context Saturation)</strong> و <strong>کاهش تمرکز شناختی مدل</strong>.
+          </p>
+          <p>
+            راهکار مدرن مهندسی سیستم، حرکت به سوی معماری <em>Multi-Agent System (MAS)</em> است. در این الگو، به جای تکیه بر یک سوپرپرامپت غول‌پیکر، کار به صدها عامل ریزنقش و متمرکز سپرده می‌شود که هر یک دستورالعمل (System Prompt)، ابزارها و دامنه دسترسی کاملاً محدودی دارند، اما تحت یک ساختار ارکستراسیون منسجم با یکدیگر همکاری می‌کنند.
+          </p>
+        </section>
+
+        <section class="content-section">
+          <h2>ساختار سیستم: Grokbot و معماری خوشه‌ای K3</h2>
+          <p>
+            همانطور که در اینفوگرافیک بالا مشاهده می‌کنید، سیستم از دو لایه اصلی تشکیل شده است:
+          </p>
+          
+          <div class="architecture-grid">
+            <div class="arch-card">
+              <div class="arch-card-icon">
+                <Icon name="solar:cpu-bolt-bold-duotone" size="1.8rem" />
+              </div>
+              <h4>لایه ارکستراسیون: ۱۶ ایجنت Grokbot</h4>
+              <p>
+                این لایه مانند هیئت مدیره سیستم عمل می‌کند. وظایف این ۱۶ ایجنت عبارت است از:
+              </p>
+              <ul>
+                <li>برنامه‌ریزی استراتژیک و تفکیک تسک‌ها</li>
+                <li>تحقیق اولیه و اعتبارسنجی نیازمندی‌ها</li>
+                <li>ایجاد، لغو و مانیتورینگ ایجنت‌های K3</li>
+                <li>هماهنگی پیام‌ها و رفع تعارض‌های احتمالی</li>
+                <li>پایش عملکرد و مصرف منابع</li>
+              </ul>
+            </div>
+
+            <div class="arch-card">
+              <div class="arch-card-icon">
+                <Icon name="solar:server-square-bold-duotone" size="1.8rem" />
+              </div>
+              <h4>لایه اجرایی: ۳۰۰ ایجنت K3</h4>
+              <p>
+                نیروی کار موازی که به ۶ دسته تخصصی تقسیم می‌شوند:
+              </p>
+              <ul>
+                <li><strong>تحقیق (Research):</strong> جستجو، مرور اسناد و تجمیع داده‌های اولیه</li>
+                <li><strong>تحلیل (Analysis):</strong> مدل‌سازی آماری، بررسی منطقی و تشخیص ناهنجاری</li>
+                <li><strong>کدنویسی (Coding):</strong> پیاده‌سازی ماژول‌ها، تست‌نویسی و ریفکتورینگ</li>
+                <li><strong>جمع‌آوری داده (Data Gathering):</strong> استخراج بلادرنگ از منابع و APIها</li>
+                <li><strong>اجرا (Execution):</strong> ران کردن تست‌ها، بیلدها و اسکریپت‌ها</li>
+                <li><strong>گزارش (Reporting):</strong> مستندسازی، جمع‌بندی و تولید خروجی</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-section">
+          <h2>مراحل ۵‌گانه پیاده‌سازی (بر اساس اینفوگرافیک)</h2>
+          <p>
+            برای راه‌اندازی این شبکه و هدایت همزمان ۳۰۰ ایجنت، خط لوله ۵ مرحله‌ای زیر پیاده‌سازی می‌شود:
+          </p>
+
+          <div class="steps-flow">
+            {/* Step 1 */}
+            <div class="step-card">
+              <div class="step-badge">مرحله ۱</div>
+              <div class="step-body">
+                <h3>راه‌اندازی و اتصال (Setup & Connectivity)</h3>
+                <p>
+                  در اولین مرحله، ارتباط بین هسته Grokbot و کلاستر K3 برقرار می‌شود:
+                </p>
+                <ul>
+                  <li><strong>اتصال Grokbot:</strong> پیکربندی دسترسی‌های امنیتی، وب‌سرویس‌های توزیع‌شده و کلیدهای احراز هویت.</li>
+                  <li><strong>افزودن دسترسی K3:</strong> تعریف ظرفیت منابع سرور، محدودیت‌های موازی‌سازی (Concurrency Limits) و سقف بودجه توکن.</li>
+                  <li><strong>پیکربندی ابزارها (Tool Configuration):</strong> اعطای ابزارهای مجاز به هر گروه کاری (دسترسی وب، پایگاه داده، مفسر کد و ران‌تایم ایزوله).</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Step 2 */}
+            <div class="step-card">
+              <div class="step-badge">مرحله ۲</div>
+              <div class="step-body">
+                <h3>ایجاد و تخصیص نقش‌ها (Agent Provisioning)</h3>
+                <p>
+                  در این مرحله، هسته Grokbot با توجه به تسک تعریف‌شده، ساختار خوشه‌ای ۳۰۰ ایجنت K3 را به صورت پویا نمونه‌سازی (Instantiate) می‌کند:
+                </p>
+                <ul>
+                  <li>تزریق پرامپت‌های سیستمی مینیمال و هدفمند برای هر ایجنت.</li>
+                  <li>تعیین قراردادهای ورودی و خروجی داده به صورت ساختاریافته (Strict JSON Schema).</li>
+                  <li>تفکیک ایجنت‌ها به خوشه‌های ۵۰ تایی با یک لیدر اختصاصی برای کاهش بار شبکه.</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div class="step-card">
+              <div class="step-badge">مرحله ۳</div>
+              <div class="step-body">
+                <h3>هماهنگی و مدیریت ارتباطات (Coordination & Message Bus)</h3>
+                <p>
+                  بزرگ‌ترین گلوگاه در سیستم‌های چندایجنت بزرگ، ارتباط نقطه به نقطه (Point-to-Point) است که باعث پیچیدگی \(O(n^2)\) و سربار شدید پیام‌ها می‌شود. برای حل این مشکل:
+                </p>
+                <ul>
+                  <li>ارتباط از طریق <strong>معماری سلسله‌مراتبی (Hierarchical Tree)</strong> برقرار می‌شود: ایجنت‌های K3 فقط با سرگروه خود و سرگروه‌ها با ۱۶ ایجنت هسته Grokbot تبادل نظر می‌کنند.</li>
+                  <li>استفاده از سیستم صف و باس پیام ناهمگام برای ایزوله کردن تاخیر شبکه‌ها و جلوگیری از مسدود شدن فرایندها.</li>
+                  <li>سازوکار حل تعارض (Conflict Resolution) برای ادغام داده‌های مغایر توسط ایجنت تحلیل‌گر ارشد.</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Step 4 */}
+            <div class="step-card">
+              <div class="step-badge">مرحله ۴</div>
+              <div class="step-body">
+                <h3>اجرای همزمان و پایش بلادرنگ (Parallel Execution & Telemetry)</h3>
+                <p>
+                  لحظه شروع عملیات؛ ۳۰۰ ایجنت آنلاین به صورت موازی شروع به فعالیت می‌کنند:
+                </p>
+                <div class="console-box" dir="ltr">
+                  <div class="console-head">
+                    <span class="console-dot red"></span>
+                    <span class="console-dot yellow"></span>
+                    <span class="console-dot green"></span>
+                    <span class="console-title">K3 Swarm Telemetry Monitor</span>
+                  </div>
+                  <pre><code>&gt; 300 ایجنت آنلاین ...
+&gt; [Research] 60 agents collecting technical citations...
+&gt; [Analysis] 50 agents verifying schema and logic consistency...
+&gt; [Coding]   80 agents generating modular implementation...
+&gt; [Data]     50 agents crawling API responses...
+&gt; [Exec]     40 agents running sandbox unit tests (100% pass)...
+&gt; [Report]   20 agents structuring output sections...
+&gt; وضعیت: همه گره‌ها فعال و در حال نگارش نهایی ...</code></pre>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 5 */}
+            <div class="step-card">
+              <div class="step-badge">مرحله ۵</div>
+              <div class="step-body">
+                <h3>تجمیع نتایج، پایش و تحویل (Aggregation & Output)</h3>
+                <p>
+                  در گام نهایی، خروجی‌های پراکنده ۳۰۰ ایجنت توسط ایجنت‌های گزارش‌نویس تجمیع و پاک‌سازی می‌شوند:
+                </p>
+                <ul>
+                  <li>حذف موارد تکراری و ادغام تحلیل‌های تکمیلی.</li>
+                  <li>بررسی خطای متقابل (Cross-Validation) برای اطمینان از عدم وجود توهم مدل (Hallucination).</li>
+                  <li>تولید داشبورد آماری، نمودارهای تحلیلی و گزارش نهایی جامع قابل استفاده برای مدیران و توسعه‌دهندگان.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-section">
+          <h2>نمونه کد پیکربندی شبکه ایجنت‌ها در کلاستر K3</h2>
+          <p>
+            کد زیر نمونه‌ای از نحوه تعریف ساختار هماهنگ‌کننده و ثبت کلاستر ۳۰۰ ایجنت با استفاده از یک باس توزیع‌شده است:
+          </p>
+
+          <div class="code-snippet-wrap" dir="ltr">
+            <div class="code-snippet-header">
+              <span class="file-name">agent-swarm-config.ts</span>
+              <span class="lang-badge">TypeScript</span>
+            </div>
+            <pre><code>{`export interface SwarmClusterConfig {
+  coreId: 'grokbot-core-16';
+  workerCluster: 'k3-swarm-300';
+  totalAgents: 300;
+  groups: {
+    research: 60;
+    analysis: 50;
+    coding: 80;
+    dataGathering: 50;
+    execution: 40;
+    reporting: 20;
+  };
+  orchestration: {
+    topology: 'hierarchical-tree';
+    maxConcurrency: 300;
+    heartbeatIntervalMs: 2500;
+    messageBus: 'distributed-memory-queue';
+    rateLimiter: {
+      maxTokensPerMin: 1_200_000,
+      backoffPolicy: 'exponential-jitter',
+    };
+  };
+}
+
+export async function bootstrapK3Swarm(config: SwarmClusterConfig) {
+  // ۱. اتصال به هسته Grokbot
+  const core = await GrokbotCore.connect({ id: config.coreId });
+
+  // ۲. راه‌اندازی گره‌های K3
+  const cluster = await K3Cluster.provision({
+    count: config.totalAgents,
+    groups: config.groups,
+  });
+
+  // ۳. ایجاد کانال هماهنگی و توزیع وظایف
+  await core.bindSwarm(cluster, {
+    onTelemetry: (metric) => console.log('Swarm active:', metric),
+    onError: (err) => core.failoverAgent(err.agentId),
+  });
+
+  return cluster.start();
+}`}</code></pre>
+          </div>
+        </section>
+
+        <section class="content-section">
+          <h2>سه درس طلایی در مدیریت مقیاس بزرگ ایجنت‌ها</h2>
+          <div class="tips-grid">
+            <div class="tip-card">
+              <div class="tip-icon">
+                <Icon name="solar:shield-check-bold-duotone" size="1.5rem" />
+              </div>
+              <h4>۱. تفکیک کامل دسترسی و اصل کمترین اختیار</h4>
+              <p>
+                هیچ ایجنت کارگری نباید دسترسی مستقیم به همه ابزارها داشته باشد. ایجنت‌های کدنویسی فقط دسترسی به محیط Sandbox دارند و ایجنت‌های جمع‌آوری داده فقط دسترسی خواندن شبکه را دارا هستند.
+              </p>
+            </div>
+
+            <div class="tip-card">
+              <div class="tip-icon">
+                <Icon name="solar:chart-square-bold-duotone" size="1.5rem" />
+              </div>
+              <h4>۲. بازخورد نوسانی و کنترل مصرف توکن</h4>
+              <p>
+                اجرای همزمان ۳۰۰ ایجنت می‌تواند در چند ثانیه میلیون‌ها توکن مصرف کند. استفاده از ساختار Cache معنایی (Semantic Caching) و محدودکننده‌های دینامیک نرخ مصرف الزامی است.
+              </p>
+            </div>
+
+            <div class="tip-card">
+              <div class="tip-icon">
+                <Icon name="solar:refresh-square-bold-duotone" size="1.5rem" />
+              </div>
+              <h4>۳. مکانیزم Self-Healing و بازیابی خطا</h4>
+              <p>
+                در یک کلاستر ۳۰۰ تایی، بروز تایم‌اوت یا خطای شبکه در چند ایجنت امری طبیعی است. سیستم باید بدون متوقف کردن سایر شاخه‌ها، وظیفه ایجنت متوقف شده را به یک ایجنت جایگزین منتقل کند.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-section">
+          <h2>جمع‌بندی</h2>
+          <p>
+            تغییر پارادایم از مدل‌های تک‌ایجنت به شبکه‌های ارکستریت‌شده مانند ترکیب ۱۶ ایجنت هسته Grokbot و ۳۰۰ ایجنت K3، افق‌های نوینی را در مهندسی نرم‌افزار و تحلیل خودکار داده‌ها گشوده است. با رعایت اصول هماهنگی سلسله‌مراتبی، ایزولاسیون ابزارها و مانیتورینگ دقیق خط لوله، می‌توان تسک‌هایی که در گذشته ماه‌ها زمان می‌برد را در عرض چند ساعت با بالاترین دقت اجرا نمود.
+          </p>
+        </section>
+      </div>
+
+      {/* Author Card Footer */}
+      <footer class="article-footer-box">
+        <div class="author-bio-card">
+          <div class="author-avatar-xl">
+            <img
+              src={withBase(authorAvatar)}
+              alt="SallaR"
+              width="72"
+              height="72"
+              class="author-photo-img-xl"
+              loading="lazy"
+            />
+          </div>
+          <div class="author-bio-info">
+            <div class="author-bio-head">
+              <h3>SallaR</h3>
+              <a href="https://x.com/SallarDev" target="_blank" rel="noopener noreferrer" class="author-handle-pill" dir="ltr">
+                @SallarDev
+              </a>
+            </div>
+            <p class="author-bio-desc">
+              پژوهشگر و معمار سیستم‌های هوش مصنوعی، طراحی سیستم‌های چندایجنت خودگردان (Multi-Agent Swarms) و زیرساخت‌های محاسباتی مقیاس‌پذیر.
+            </p>
+          </div>
+        </div>
+
+        <div class="article-actions-row">
+          <a href={withBase('/#articles')} class="btn-back-articles">
+            <Icon name="solar:arrow-right-line-duotone" size="1.15rem" />
+            <span>بازگشت به بخش مقالات</span>
+          </a>
+
+          <a href={withBase('/')} class="btn-back-home">
+            <Icon name="solar:home-2-line-duotone" size="1.15rem" />
+            <span>صفحه اصلی پورتفولیو</span>
+          </a>
+        </div>
+      </footer>
+    </div>
+  </article>
+
+  <script is:inline>
+    // Reading Progress Bar
+    window.addEventListener('scroll', () => {
+      const el = document.getElementById('readingProgress');
+      if (!el) return;
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+      el.style.width = scrolled + '%';
+    });
+  </script>
+</BaseLayout>
